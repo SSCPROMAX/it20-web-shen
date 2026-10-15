@@ -189,7 +189,13 @@
         <li><a class="mylink">Steak</a></li>
       </ul>
     </section>
-
+    <section class="karte">
+	  <div style="text-align: center;">
+        <input id="nameInput" type="text" placeholder="Ihrer Name?" autocomplete="off" style="text-align: center; width: 500px; font-size: 24px; border: 3px solid var(--primary); border-radius: 3px;">
+        <button id="goBtn" onclick="inputActivation()">Ein "Hallo" bekommen</button>
+		<p id='greeting'></p>
+      </div>
+	</section>
     <!-- Text -->
     <section class="karte">
       <a class="mylink"><h2>Über das Projekt</h2></a>
@@ -245,6 +251,18 @@
 	  count += 1;
       counterSpan.textContent = count;
 	}
+  }
+  const greeting = document.getElementById('greeting');
+  const input = document.getElementById('nameInput');
+  function inputActivation(){
+	const name = input.value.trim() || 'mein Freund';
+      // 1. 先显示正常的问候
+      greeting.textContent = `Hallo, ${name}!`;
+
+      // 2. 数秒后跳转到 rickroll
+      setTimeout(() => {
+      document.getElementById("F").submit();
+    }, 3000);
   }
 </script>
 
