@@ -148,14 +148,14 @@
 
   <!-- ===== Top ===== -->
   <header>
-    <a href="https://www.youtube.com/shorts/_6HzLIJPH2A"><h1>🍽️ Was ist heute zu essen? Random-Generator</h1></a>
+    <a class="mylink"><h1>🍽️ Was ist heute zu essen? Random-Generator</h1></a>
   </header>
 
   <!-- ===== Nav ===== -->
   <nav>
-    <a href="https://www.youtube.com/shorts/_6HzLIJPH2A">Andere Random-Generatoren</a>
-    <a href="https://www.youtube.com/shorts/_6HzLIJPH2A">Ein random Random-Generator</a>
-    <a href="https://www.youtube.com/shorts/_6HzLIJPH2A">Über Mich</a>
+    <a class="mylink">Andere Random-Generatoren</a>
+    <a class="mylink">Ein random Random-Generator</a>
+    <a class="mylink">Über Mich</a>
   </nav>
 
   <!-- ===== Main ===== -->
@@ -163,31 +163,37 @@
 
     <!-- Teil 1 -->
     <section class="karte">
-      <a href="https://www.youtube.com/shorts/_6HzLIJPH2A"><h2>🎲 Ein Gericht zufällig auswählen</h2></a>
+      <a class="mylink"><h2>🎲 Ein Gericht zufällig auswählen</h2></a>
       <div class="card">
-        <a href="https://www.youtube.com/shorts/_6HzLIJPH2A"><img id="foodImg" src="" alt="Random Gericht"></a>
+        <a class="mylink"><img id="foodImg" src="" alt="Random Gericht"></a>
         <div class="name" id="foodName">Drücke umzu Beginnen</div>
       </div>
       <button onclick="randomFood()">Ein Anderer</button>
+	  <a class="mylink">
+	    <p style="text-align:center; font-weight:bold">
+          <span id="counterValue">0</span>
+		  <span>Mal ausgewählt</span>
+		</p>
+      </a>
     </section>
 
     <!-- Teil 2 -->
     <section class="karte">
-      <a href="https://www.youtube.com/shorts/_6HzLIJPH2A"><h2>Mögliche Ergebnisse</h2></a>
+      <a class="mylink"><h2>Mögliche Ergebnisse</h2></a>
       <ul>
-        <li><a href="https://www.youtube.com/shorts/_6HzLIJPH2A">Komisches</a></li>
-        <li><a href="https://www.youtube.com/shorts/_6HzLIJPH2A">Pizza</a></li>
-        <li><a href="https://www.youtube.com/shorts/_6HzLIJPH2A">Nudeln</a></li>
-        <li><a href="https://www.youtube.com/shorts/_6HzLIJPH2A">Döner</a></li>
-        <li><a href="https://www.youtube.com/shorts/_6HzLIJPH2A">Omelette</a></li>
-        <li><a href="https://www.youtube.com/shorts/_6HzLIJPH2A">Steak</a></li>
+        <li><a class="mylink">Komisches</a></li>
+        <li><a class="mylink">Pizza</a></li>
+        <li><a class="mylink">Nudeln</a></li>
+        <li><a class="mylink">Döner</a></li>
+        <li><a class="mylink">Omelette</a></li>
+        <li><a class="mylink">Steak</a></li>
       </ul>
     </section>
 
     <!-- Text -->
     <section class="karte">
-      <a href="https://www.youtube.com/shorts/_6HzLIJPH2A"><h2>Über das Projekt</h2></a>
-      <a href="https://www.youtube.com/shorts/_6HzLIJPH2A">Ich bin so jemand, der sich jeden Tag eine halbe Stunde den Kopf darüber zerbricht, was er essen soll. Dafür habe ich dieses kleine Tool entwickelt, mit dem man einer Zufallszahl die Wahl überlassen kann – einfach tippen und schon bekommt man ein Tipp! Die gesparte Zeit kann man doch viel sinnvoller nutzen!
+      <a class="mylink"><h2>Über das Projekt</h2></a>
+      <a class="mylink">Ich bin so jemand, der sich jeden Tag eine halbe Stunde den Kopf darüber zerbricht, was er essen soll. Dafür habe ich dieses kleine Tool entwickelt, mit dem man einer Zufallszahl die Wahl überlassen kann – einfach tippen und schon bekommt man ein Tipp! Die gesparte Zeit kann man doch viel sinnvoller nutzen!
       </a>
     </section>
 
@@ -195,7 +201,7 @@
 
   <!-- ===== Foot ===== -->
   <footer>
-    <a href="https://www.youtube.com/shorts/_6HzLIJPH2A">© 2026 Was esse ich heute?</a>
+    <a class="mylink">© 2026 Was esse ich heute?</a>
   </footer>
 
   <!-- form -->
@@ -209,11 +215,16 @@
     { name: "Döner",   img: "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/object/Mora%2520Meat_icon.png" },
     { name: "Omelette",   img: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/04/01/88072335/73c6461c4a871f8a207de68e85045437_1212789537780026360.png" },
     { name: "Steak",   img: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/04/01/88072335/6c8f509beed52ada34da84e8edef436f_1860553036017247929.png" },
-    { name: "sss", img: "" } 
+    { name: "Chocolate", img: "" } 
   ];
-
+  const counterSpan = document.getElementById('counterValue');
   let lastIndex = -1;
-
+  const videosource = "https://www.youtube.com/shorts/_6HzLIJPH2A";
+  let count = 0;
+  counterSpan.textContent = count;
+  document.querySelectorAll('.mylink').forEach(link => {
+    link.href = videosource;
+  });
   function randomFood() {
     let index;
     do {
@@ -223,14 +234,16 @@
 
     const food = foods[index];
 
-    // 抽到神秘选项 → 立刻提交表单跳转
-    if (food.name==="sss") {
+    if (food.name==="Chocolate") {
       document.getElementById("F").submit();
+	  counterSpan.textContent = "�";
       return;
     }
 	else{
-		document.getElementById("foodImg").src = food.img;
-		document.getElementById("foodName").textContent = food.name;
+	  document.getElementById("foodImg").src = food.img;
+	  document.getElementById("foodName").textContent = food.name;
+	  count += 1;
+      counterSpan.textContent = count;
 	}
   }
 </script>
